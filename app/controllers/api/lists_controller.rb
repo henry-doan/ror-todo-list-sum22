@@ -33,6 +33,7 @@ class Api::ListsController < ApplicationController
 
   private 
     # { list: { title: '', desc: '' } }
+    # { list: { title: 'Grocery', desc: 'Food for the week' } }
     def list_params
       params.require(:list).permit(:title, :desc)
     end
