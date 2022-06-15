@@ -1,15 +1,27 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 // form for now, add function 
 // display inputs for each field of the object
 // have the user type in the input and save it to state 
 // handle submit, run the add function
 // pull in our props
-const ListForm = ({ addList }) => {
+
+// pull in the props for the update, field of the obj, function to update, function to close the form
+const ListForm = ({ addList, id, title, desc, updateList, setEdit }) => {
   // const [list, setList] = useState({ title: '', desc: '', age: 0, price: 0.0, friendly: false })
   // this is where we are storing the user input 
   // initial values for each field and datatypes
   const [list, setList] = useState({ title: '', desc: '' })
+
+  // run logic before we display on the page
+  useEffect( () => {
+    // check if we are editing
+    if (id) {
+      // setList({ title: title, desc: desc })
+      // prepropulate the form with the title and desc
+      setList({ title, desc })
+    }
+  }, [])
 
   // what happen when we submit the form
   // more front end validations comming 
@@ -18,8 +30,18 @@ const ListForm = ({ addList }) => {
     // stop put the input in the url
     // setList({ ...list, age: parseInt(list.age)})
     e.preventDefault()
-    // add function, pass in the list im storing in state
-    addList(list)
+
+    // check if we are editing 
+    if (id) {
+      // call the update list function, id list, object that we are updating the item too 
+      updateList(id, list)
+
+      // close out the form 
+      setEdit(false)
+    } else {
+      // add function, pass in the list im storing in state
+      addList(list)
+    }
 
     // clear out the form
     // set the state to initial value
@@ -30,6 +52,7 @@ const ListForm = ({ addList }) => {
   // each field should have their own input
   return (
     <>
+      <h1>{id ? "Edit" : "Create" } List </h1>
       <form onSubmit={handleSubmit}>
         <label>Title:</label>
         {/* input for the title */}
@@ -54,7 +77,7 @@ const ListForm = ({ addList }) => {
           value={list.desc}
           onChange={(e) => setList({ ...list, desc: e.target.value})}
         ></textarea>
-        <button type='submit'>Submit</button>
+        <button type='submit'>{id ? "Update" : "Submit" }</button>
       </form>
     </>
   )
