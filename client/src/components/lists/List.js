@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import ListForm from './ListForm';
+import { Link } from 'react-router-dom';
 
 // your show for your obj, single element 
 // display all of the field / details of the obj
@@ -52,6 +53,10 @@ const List = ({ id, title, desc, created_at, updateList, deleteList }) => {
             {/* press the button, then it does the delete function passing id  */}
             {/* () => only trigger the logic when we press the button */}
             <button onClick={() => deleteList(id)}>Delete</button>
+            {/* what ever i click on it passes the parent id */}
+            <Link to={`/${id}/todos`}>
+              Todos
+            </Link>
             <hr />
           </div>
           <br />
