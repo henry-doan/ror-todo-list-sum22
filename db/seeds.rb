@@ -3,6 +3,7 @@
 # List.create( title: 'Bunker', desc: 'Meal prep')
 
 #  delete all children before we delete parent
+Note.delete_all
 Todo.delete_all
 # Delete any list that was already there, optional, mainly for testing 
 List.delete_all
@@ -23,12 +24,18 @@ List.delete_all
 
   # will create 3 todos for each list
   3.times do
-    Todo.create(
+    @todo = Todo.create(
       title: Faker::Food.ingredient,
       rating: @nums.sample,
       price: 1.50,
       complete: Faker::Boolean.boolean,
       list_id: @list.id # passing in the parents id
+    )
+
+    Note.create(
+      subject: Faker::Science.science,
+      body: Faker::Lorem.sentence,
+      todo_id: @todo.id # passing in the parents id
     )
   end
 
