@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { Link } from 'react-router-dom';
 import TodoForm from './TodoForm';
 
 const Todo = ({ id, title, price, rating, complete, list_id, updateTodo, deleteTodo }) => {
@@ -29,6 +30,9 @@ const Todo = ({ id, title, price, rating, complete, list_id, updateTodo, deleteT
           <p>{ complete ? "Completed" : " Not Complete"}</p>
           <button onClick={() => setEdit(true)}>Edit</button>
           <button onClick={() => deleteTodo(id)}>Delete</button>
+          <Link to={`/${id}/notes`}>
+            Notes
+          </Link>
         </>
       }
     </>
