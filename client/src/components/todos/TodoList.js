@@ -2,7 +2,7 @@ import Todo from './Todo';
 
 const TodoList = ({ todos, updateTodo, deleteTodo }) => (
   <>
-    <h1>All Todos</h1>
+    <h1>All My Todos</h1>
     { todos.map( t => 
       <Todo
         key={t.id}
