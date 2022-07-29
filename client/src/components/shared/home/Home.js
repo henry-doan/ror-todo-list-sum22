@@ -3,7 +3,7 @@ import Features from './Features';
 import Prices from './Prices';
 
 // import the styled components that we are using
-import { MainTitle, MainImage } from '../../styles/shared';
+import { MainTitle, MainImage, myTitle } from '../../styles/shared';
 
 // import an image you can call it whatever you want 
 // from where it is located and the name and file ext
@@ -28,6 +28,8 @@ const Home = () => (
     {/* styling as a module to pull in the hash of styles */}
     <h1 style={style.title}>Hello World</h1>
     <h1 style={style.subTitle}>Hello World</h1>
+    {/* <h1 className='myTitle'>Hello World</h1> */}
+    <myTitle>Hello World</myTitle>
 
     {/* using the styled component as a html element */}
     <MainTitle>Hello Mars</MainTitle>

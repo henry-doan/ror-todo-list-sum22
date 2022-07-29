@@ -1,5 +1,6 @@
 import styled from 'styled-components';
-
+import { Link } from 'react-router-dom';
+import { Image } from 'react-bootstrap';
 // create components with styled, html element or other elements
 // define the styled for that element 
 
@@ -30,4 +31,28 @@ export const MainText = styled.h1`
   font-weight: 200;
   padding: 400;
   text-align: center;
+`
+
+export const MainNavLink = styled(Link)`
+  color: gray;
+
+`
+
+export const ProfileImage = styled(Image)`
+  width: 400px;
+
+  @media (max-width: 1000px) {
+    width: 200px;
+  }
+`
+
+export const myTitle = styled.h1`
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
 `
